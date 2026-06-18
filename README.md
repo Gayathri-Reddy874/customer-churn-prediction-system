@@ -218,11 +218,11 @@ streamlit run app_churn.py
 
 ### Customer Input Interface
 
-
+![Customer Input Interface](Screenshots/dashboard.png)
 
 ### Prediction Result
 
-
+![Prediction Result](screenshots/prediction_result.png)
 
 ---
 
