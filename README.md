@@ -190,8 +190,8 @@ Industries that can benefit include:
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/customer-churn-prediction.git
-cd customer-churn-prediction
+git clone https://github.com/yourusername/customer-churn-prediction-system.git
+cd customer-churn-prediction-system
 ```
 
 ### Install Dependencies
