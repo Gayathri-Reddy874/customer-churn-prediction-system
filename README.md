@@ -222,7 +222,7 @@ streamlit run app_churn.py
 
 ### Prediction Result
 
-![Prediction Result](screenshots/prediction_result.png)
+![Prediction Result](Screenshots/prediction_result.png)
 
 ---
 
