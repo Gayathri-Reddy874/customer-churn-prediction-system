@@ -65,7 +65,7 @@ Customer-Churn-Prediction/
 
 ## Live Demo
 
-[Customer Churn Prediction System]().
+[Customer Churn Prediction System](https://customer-churn-prediction-system-7apptqulm7avdvbdouq9hvv.streamlit.app/).
 
 ---
 
