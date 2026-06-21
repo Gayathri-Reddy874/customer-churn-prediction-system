@@ -1,259 +1,196 @@
-# 📊 Customer Churn Prediction System
+# 🔮 ChurnSense — Customer Churn Prediction System
 
-## 📌 Project Overview
-
-Customer retention is critical for business growth and profitability. This project leverages Machine Learning techniques to predict whether a customer is likely to churn based on demographic, behavioral, and transaction-related data.
-
-The solution includes an end-to-end machine learning pipeline covering data preprocessing, feature engineering, model training, evaluation, model selection, and deployment through an interactive Streamlit web application.
+A machine learning web application that predicts customer churn using behavioral, demographic, and transactional data. Built with Scikit-learn and deployed via a professional Streamlit interface with a dark analytics-grade UI.
 
 ---
 
-## 🎯 Objectives
+## 📌 Problem Statement
 
-* Predict customer churn using historical customer data.
-* Identify customers at risk of leaving.
-* Support proactive customer retention strategies.
-* Compare multiple machine learning algorithms and select the best-performing model.
-* Deploy a user-friendly prediction interface using Streamlit.
+Customer churn is one of the most critical challenges in retail and e-commerce. Retaining an existing customer costs **5× less** than acquiring a new one. This project builds an end-to-end ML pipeline that identifies at-risk customers **before** they leave — enabling proactive, data-driven retention strategies.
 
 ---
 
-## 🛠️ Technologies Used
+## 🖥️ App Preview
 
-### Programming Language
+> *Dark-themed professional dashboard with sidebar input controls, live metric cards, feature importance visualization, and contextual retention recommendations.*
 
-* Python
-
-### Libraries & Frameworks
-
-* Pandas
-* NumPy
-* Scikit-Learn
-* Matplotlib
-* Seaborn
-* Streamlit
-* Pickle
-
-### Machine Learning Algorithms
-
-* Logistic Regression
-* K-Nearest Neighbors (KNN)
-* Naive Bayes
-* Support Vector Machine (SVM)
-* Decision Tree
-* Random Forest
+![Dashboard Screenshot](Screenshots/dashboard.png)
 
 ---
 
-## 📂 Project Structure
+## 🗂️ Project Structure
 
-```bash
-Customer-Churn-Prediction/
+```
+churnsense-ml/
 │
-├── churn prediction.csv
-├── train_churn.py
-├── churn_model.pkl
-├── app_churn.py
-├── screenshots/
-│   ├── dashboard.png
-│   └── prediction_result.png
-│
+├── app_churn.py              # Streamlit web app (UI + prediction)
+├── train_churn.py            # Model training pipeline
+├── churn_model.pkl           # Saved model (best estimator + scaler + features)
+├── churn_prediction.csv      # Dataset (5,200 customer records)
+├── requirements.txt          # Python dependencies
+├── Screenshots/              # App screenshots
 └── README.md
 ```
 
 ---
 
-## Live Demo
+## 📊 Dataset Overview
 
-[Customer Churn Prediction System](https://customer-churn-prediction-system-7apptqulm7avdvbdouq9hvv.streamlit.app/).
+| Attribute | Details |
+|---|---|
+| **Records** | 5,200 customers |
+| **Features** | 19 input features + 1 target |
+| **Target** | `Churn` — Yes / No (binary) |
+| **Class Balance** | Yes: 2,627 · No: 2,573 (nearly balanced) |
 
----
+### Feature Categories
 
-## 📊 Dataset Features
-
-The dataset contains customer demographic, behavioral, and transactional information, including:
-
-* Age
-* Gender
-* Income
-* Spending Score
-* Purchase Amount
-* Product Category
-* Payment Method
-* City
-* State
-* Country
-* Returns
-* Discount Used
-* Review Score
-* Browser
-* Device Type
-* Session Time
-* Last Purchase Date
-
-### Target Variable
-
-* Churn
-
-  * 1 → Customer Churned
-  * 0 → Customer Retained
+| Category | Features |
+|---|---|
+| Demographics | Age, Gender, Income |
+| Location | City, State, Country |
+| Purchase Behaviour | SpendingScore, PurchaseAmount, ProductCategory, PaymentMethod |
+| Engagement | Returns, DiscountUsed, ReviewScore, SessionTime, Browser, Device |
+| Temporal | LastPurchaseDate → DaysSinceLastPurchase (engineered) |
 
 ---
 
-## ⚙️ Machine Learning Workflow
+## ⚙️ ML Pipeline
 
-### 1. Data Preprocessing
-
-* Removed duplicate records
-* Handled missing values
-* Standardized data formats
-* Converted date fields into numerical features
-
-### 2. Feature Engineering
-
-* Created Days Since Last Purchase feature
-* Encoded categorical variables
-* Scaled numerical features
-
-### 3. Model Training
-
-The following algorithms were trained and evaluated:
-
-* Logistic Regression
-* KNN
-* Naive Bayes
-* SVM
-* Decision Tree
-* Random Forest
-
-### 4. Model Evaluation
-
-Models were compared using:
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-
-The best-performing model was automatically selected and saved for deployment.
-
----
-
-## 🚀 Streamlit Application
-
-The project includes an interactive Streamlit application where users can:
-
-* Enter customer information
-* Adjust behavioral metrics
-* Generate churn predictions instantly
-* Identify customers likely to leave
-
-### Input Parameters
-
-* Age
-* Gender
-* Income
-* Spending Score
-* Purchase Amount
-* Product Category
-* Payment Method
-* Location Details
-* Customer Returns
-* Discount Usage
-* Review Score
-* Browser & Device Type
-* Session Duration
-
-### Output
-
-* Churn
-* Not Churn
-
----
-
-## 📈 Business Value
-
-This solution helps organizations:
-
-* Reduce customer attrition
-* Improve customer retention strategies
-* Identify high-risk customers
-* Increase customer lifetime value
-* Support data-driven decision-making
-
-Industries that can benefit include:
-
-* E-Commerce
-* Retail
-* Banking
-* Telecommunications
-* Subscription-Based Services
-
----
-
-## ▶️ How to Run the Project
-
-### Clone Repository
-
-```bash
-git clone https://github.com/yourusername/customer-churn-prediction-system.git
-cd customer-churn-prediction-system
+```
+Raw CSV  →  Data Cleaning  →  Feature Engineering  →  Encoding  →  Scaling  →  Model Training  →  Evaluation  →  Best Model Saved
 ```
 
-### Install Dependencies
+### Steps in `train_churn.py`
+
+1. **Data Collection** — Load `churn_prediction.csv`
+2. **Data Cleaning** — Remove duplicates, handle nulls (forward-fill + back-fill), fix formats
+3. **Feature Engineering** — Convert `LastPurchaseDate` → `DaysSinceLastPurchase` (recency signal)
+4. **Encoding** — Label Encoding on all categorical columns
+5. **EDA** — Churn distribution, Income vs Churn, Spending vs Churn
+6. **Train/Test Split** — 80/20 split, `random_state=42`
+7. **Model Training** — 6 classifiers benchmarked
+8. **Best Model Selection** — Ranked by F1 Score
+9. **Model Serialization** — `pickle.dump` saves `(model, scaler, features)`
+
+### Models Benchmarked
+
+| Model | Metric Used |
+|---|---|
+| Logistic Regression | F1 Score |
+| K-Nearest Neighbors | F1 Score |
+| Naive Bayes | F1 Score |
+| Support Vector Machine | F1 Score |
+| Decision Tree | F1 Score |
+| ✅ Random Forest *(best)* | F1 Score |
+
+> F1 Score was used as the selection criterion to balance Precision and Recall, avoiding bias from class distribution.
+
+---
+
+## 🖥️ App Features (`app_churn.py`)
+
+- **Sidebar input panel** — 16 customer attributes organized into 4 sections
+- **Live metric cards** — Income, Spending Score, Review Score update in real time
+- **Customer snapshot strip** — 8-field summary grid for at-a-glance review
+- **Feature importance visualization** — Horizontal bar chart of top churn drivers
+- **Prediction output** — Color-coded result card (🚨 Churn Risk / ✅ Retained)
+- **Contextual action panels** — Automated retention or nurture recommendations
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Gayathri-Reddy874/customer-churn-prediction-system.git
+cd churn-prediction-system
+```
+
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Train Model
+### 3. Train the model
 
 ```bash
 python train_churn.py
 ```
 
-### Launch Streamlit App
+This generates `churn_model.pkl` in the project root.
+
+### 4. Launch the app
 
 ```bash
 streamlit run app_churn.py
 ```
 
----
-
-## 📸 Application Preview
-
-### Customer Input Interface
-
-![Customer Input Interface](Screenshots/dashboard.png)
-
-### Prediction Result
-
-![Prediction Result](Screenshots/prediction_result.png)
+Open `http://localhost:8501` in your browser.
 
 ---
 
-## 💡 Skills Demonstrated
+## 📦 Requirements
 
-* Machine Learning
-* Classification Modeling
-* Data Cleaning
-* Feature Engineering
-* Exploratory Data Analysis (EDA)
-* Model Evaluation
-* Streamlit Deployment
-* Business Analytics
-* Customer Retention Analytics
+```
+streamlit
+pandas
+numpy
+scikit-learn
+```
+
+> See `requirements.txt` for pinned versions.
 
 ---
 
-## 👨‍💻 Author
+## 📈 Results
+
+| Metric | Value |
+|---|---|
+| Best Model | Random Forest Classifier |
+| Selection Criterion | F1 Score |
+| Dataset Size | 5,200 records |
+| Features Used | 19 (+ 1 engineered) |
+| Train / Test Split | 80% / 20% |
+
+---
+
+## 🧠 Key Insights from EDA
+
+- Customers with **lower spending scores** show higher churn rates
+- **High return counts** (3+) correlate strongly with churn
+- **Short session times** paired with low review scores are strong churn signals
+- Income alone is not a reliable predictor — **behaviour patterns dominate**
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Python 3.x |
+| ML Framework | Scikit-learn |
+| Web App | Streamlit |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
+| Model Storage | Pickle |
+
+---
+
+## 👤 Author
 
 **Mallareddygari Gayathri**
+AIML Engineer
 
-Data Analyst | Data Science Enthusiast | Machine Learning Engineer
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/mallareddygari-gayathri/)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/Gayathri-Reddy874)
 
 ---
 
-## ⭐ Support
+## 📄 License
 
-If you found this project useful, consider giving it a Star ⭐ and sharing your feedback.
+This project is for academic and portfolio purposes.
+
+---
