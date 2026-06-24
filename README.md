@@ -1,4 +1,4 @@
-# 🔮 ChurnSense — Customer Churn Prediction System
+# 🔮 ChurnSense - Customer Churn Prediction System
 
 A machine learning web application that predicts customer churn using behavioral, demographic, and transactional data. Built with Scikit-learn and deployed via a professional Streamlit interface with a dark analytics-grade UI.
 
@@ -6,7 +6,7 @@ A machine learning web application that predicts customer churn using behavioral
 
 ## 📌 Problem Statement
 
-Customer churn is one of the most critical challenges in retail and e-commerce. Retaining an existing customer costs **5× less** than acquiring a new one. This project builds an end-to-end ML pipeline that identifies at-risk customers **before** they leave — enabling proactive, data-driven retention strategies.
+Customer churn is one of the most critical challenges in retail and e-commerce. Retaining an existing customer costs **5× less** than acquiring a new one. This project builds an end-to-end ML pipeline that identifies at-risk customers **before** they leave - enabling proactive, data-driven retention strategies.
 
 ---
 
