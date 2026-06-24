@@ -141,7 +141,7 @@ numpy
 scikit-learn
 ```
 
-> See `requirements.txt` for pinned versions.
+> See `requirements.txt`.
 
 ---
 
@@ -162,7 +162,7 @@ scikit-learn
 - Customers with **lower spending scores** show higher churn rates
 - **High return counts** (3+) correlate strongly with churn
 - **Short session times** paired with low review scores are strong churn signals
-- Income alone is not a reliable predictor — **behaviour patterns dominate**
+- Income alone is not a reliable predictor - **behaviour patterns dominate**
 
 ---
 
@@ -182,7 +182,8 @@ scikit-learn
 ## 👤 Author
 
 **Mallareddygari Gayathri**
-AIML Engineer
+
+AI & ML Engineer
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/mallareddygari-gayathri/)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/Gayathri-Reddy874)
