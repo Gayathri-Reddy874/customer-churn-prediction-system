@@ -40,7 +40,7 @@ churnsense-ml/
 |---|---|
 | **Records** | 5,200 customers |
 | **Features** | 19 input features + 1 target |
-| **Target** | `Churn` — Yes / No (binary) |
+| **Target** | `Churn` - Yes / No (binary) |
 | **Class Balance** | Yes: 2,627 · No: 2,573 (nearly balanced) |
 
 ### Feature Categories
@@ -90,12 +90,12 @@ Raw CSV  →  Data Cleaning  →  Feature Engineering  →  Encoding  →  Scali
 
 ## 🖥️ App Features (`app_churn.py`)
 
-- **Sidebar input panel** — 16 customer attributes organized into 4 sections
-- **Live metric cards** — Income, Spending Score, Review Score update in real time
-- **Customer snapshot strip** — 8-field summary grid for at-a-glance review
-- **Feature importance visualization** — Horizontal bar chart of top churn drivers
-- **Prediction output** — Color-coded result card (🚨 Churn Risk / ✅ Retained)
-- **Contextual action panels** — Automated retention or nurture recommendations
+- **Sidebar input panel** - 16 customer attributes organized into 4 sections
+- **Live metric cards** - Income, Spending Score, Review Score update in real time
+- **Customer snapshot strip** - 8-field summary grid for at-a-glance review
+- **Feature importance visualization** - Horizontal bar chart of top churn drivers
+- **Prediction output** - Color-coded result card (🚨 Churn Risk / ✅ Retained)
+- **Contextual action panels** - Automated retention or nurture recommendations
 
 ---
 
