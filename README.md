@@ -193,5 +193,3 @@ AI & ML Engineer
 ## 📄 License
 
 This project is for academic and portfolio purposes.
-
----
